@@ -1,6 +1,7 @@
 package com.example.ecommerceapp.Adapters;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ecommerceapp.Objects.Products;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -46,6 +48,29 @@ public class ProductAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        ViewHolder holder;
+        if (convertView == null) {
+            holder = new ViewHolder();
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(layout, null);
+            holder.imgProductImage = convertView.findViewById(R.id.imgProductImage);
+            holder.imgProductImage.setScaleType(ImageView.ScaleType.FIT_XY);
+            holder.txtProductName = convertView.findViewById(R.id.txtProductName);
+            holder.txtProductPrice = convertView.findViewById(R.id.txtProductPrice);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+
+        Products products = productsList.get(position);
+
+        Picasso.get().load(products.getProductImage()).into(holder.imgProductImage);
+        holder.txtProductName.setText(products.getProductName());
+        holder.txtProductPrice.setText(products.getProductPrice());
+
+        return convertView;
     }
+
 }
+
