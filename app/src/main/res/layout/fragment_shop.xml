@@ -1,13 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.ShopFragment">
+    tools:context=".Fragment.ShopFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Shop" />
-
-</FrameLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ss.com.bannerslider.Slider
+            android:id="@+id/bannerSlider"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:slider_interval="8000"
+            app:slider_loopSlides="true"
+            app:slider_indicatorSize="8dp"
+            app:slider_animateIndicators="true"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/goi_y_hom_nay"
+                />
+            <GridView
+                android:id="@+id/gridMovie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="2"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
